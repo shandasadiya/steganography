@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShadowVault - Secure Data Concealment</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="brand">
+                <h2>SHADOWVAULT</h2>
+                <p>Secure • Hide • Protect</p>
+            </div>
+            <nav class="nav-menu">
+                <button class="nav-btn active" onclick="switchTab('dashboard')">Dashboard</button>
+                <button class="nav-btn" onclick="switchTab('hide')">Hide Message</button>
+                <button class="nav-btn" onclick="switchTab('extract')">Extract Message</button>
+                <button class="nav-btn" onclick="switchTab('keygen')">Private Key</button>
+                <button class="nav-btn" onclick="switchTab('encrypt')">Encrypt Document</button>
+            </nav>
+        </aside>
+
+        <main class="main-content">
+            <section id="dashboard" class="tab-content active">
+                <div class="welcome-box">
+                    <h1>Welcome to ShadowVault</h1>
+                    <p>A simple, lightweight educational platform for hiding secret messages inside images, generating private cryptographic keys, and protecting documentation.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-card" onclick="switchTab('hide')">
+                        <h3>Image Steganography</h3>
+                        <p>Hide a secret text message inside an image file using your browser canvas. The visual properties of the image remain identical.</p>
+                    </div>
+                    <div class="feature-card" onclick="switchTab('keygen')">
+                        <h3>Private Key Generator</h3>
+                        <p>Generate secure, random cryptographic keys locally to learn how secure encryption seeding operates.</p>
+                    </div>
+                    <div class="feature-card" onclick="switchTab('encrypt')">
+                        <h3>Document Protection</h3>
+                        <p>Encrypt raw text files locally using secure, client-side browser logic without exposing information to servers.</p>
+                    </div>
+                </div>
+
+                <div class="notice-box">
+                    <strong>Educational Notice:</strong> This project is designed strictly for educational exploration. Do not rely on client-side browser implementations alone to secure enterprise or highly critical personal infrastructure.
+                </div>
+            </section>
+
+            <section id="hide" class="tab-content">
+                <h2>Hide Message in Image</h2>
+                <div class="card">
+                    <label>Select Cover Image:</label>
+                    <input type="file" id="hide-image-input" accept="image/*">
+                    <br><br>
+                    <label>Secret Message:</label>
+                    <textarea id="hide-message" placeholder="Enter secret message here..."></textarea>
+                    <br>
+                    <button class="action-btn" onclick="hideMessageInImage()">Encode & Save Image</button>
+                </div>
+            </section>
+
+            <section id="extract" class="tab-content">
+                <h2>Extract Message from Image</h2>
+                <div class="card">
+                    <label>Select Stego Image:</label>
+                    <input type="file" id="extract-image-input" accept="image/*">
+                    <br><br>
+                    <button class="action-btn" onclick="extractMessageFromImage()">Decode Message</button>
+                    <div id="extraction-result" style="margin-top: 20px; display: none;">
+                        <h3>Extracted Content:</h3>
+                        <p id="extracted-text" class="output-box"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="keygen" class="tab-content">
+                <h2>Private Key Generator</h2>
+                <div class="card">
+                    <p>Generate a cryptographically simulated strong string asset for authentication.</p>
+                    <button class="action-btn" onclick="generatePrivateKey()">Generate Key</button>
+                    <div id="key-result" style="margin-top: 20px; display: none;">
+                        <h3>Generated Key String:</h3>
+                        <p id="generated-key" class="output-box code-font"></p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="encrypt" class="tab-content">
+                <h2>Document Protection</h2>
+                <div class="card">
+                    <label>Text Document Content:</label>
+                    <textarea id="encrypt-text" placeholder="Enter document content to hide/obfuscate..."></textarea>
+                    <br>
+                    <label>Passphrase Key:</label>
+                    <input type="password" id="encrypt-passphrase" placeholder="Secret Key">
+                    <br><br>
+                    <button class="action-btn" onclick="xorEncryptDocument()">Obfuscate Document</button>
+                    <div id="encrypt-result" style="margin-top: 20px; display: none;">
+                        <h3>Output Result:</h3>
+                        <p id="encrypted-output" class="output-box word-break"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
